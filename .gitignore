@@ -1,0 +1,19 @@
+# IntelliJ
+.idea
+*.iml
+
+# PyInstaller
+build
+dist
+*.spec
+
+# Python
+venv
+*__pycache__
+
+# pytest
+pytest_cache
+
+# Heroes-System-Image-Croppper
+*cropped/
+
