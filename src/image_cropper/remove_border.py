@@ -66,11 +66,11 @@ def white_edge(image, scanlines):
     return x_or_y_values
 
 
-def bad_pixels_edge(image, scanlines, intensity_threshold, depth):
+def bad_pixels_edge(image, scanlines, crop_depth, search_depth):
     x_or_y_values = []
     for scanline in scanlines:
-        edges = find_edges.where_color_changes(image, scanline, intensity_threshold=intensity_threshold)
-        edge = pick_edge.last_edge(edges, depth=depth)
+        edges = find_edges.where_color_changes(image, scanline, crop_depth=crop_depth, search_depth=search_depth)
+        edge = pick_edge.last_edge(edges)
         if edge is None:
             x_or_y_values.append(scanline[0])
         else:

@@ -52,8 +52,8 @@ def crop_image(image: Image) -> Image:
 
     # Remove blurred pixels from each side to make the colors crisp.
     kwargs = {
-        "intensity_threshold": 25,
-        "depth": 5,
+        "crop_depth": 5,
+        "search_depth": 15,
     }
     image = remove_border(image, bad_pixels_edge, num_scanlines=100, **kwargs)
     log_image(image, "fuzzy pixels")

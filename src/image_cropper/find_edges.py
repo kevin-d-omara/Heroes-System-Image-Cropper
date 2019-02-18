@@ -10,7 +10,7 @@ from . import pixel
 from .itertools_extensions import window
 
 
-def where_color_changes(image, scanline, intensity_threshold=80):
+def where_color_changes(image, scanline, crop_depth=5, search_depth=15):
     """
     Return the coordinates of each pixel where the previous pixel is a different color.
 
@@ -18,15 +18,19 @@ def where_color_changes(image, scanline, intensity_threshold=80):
     """
     pixels = [image.getpixel(coord) for coord in scanline]
     transition_intensities = [
-        pixel.get_intensity(pixel.subtract(adjacent_px[0], adjacent_px[1]))
+        abs(pixel.get_intensity(pixel.subtract(adjacent_px[0], adjacent_px[1])))
         for adjacent_px
         in window(pixels, n=2)
     ]
 
+    crop_intensities = transition_intensities[0:crop_depth]
+    search_intensities = transition_intensities[crop_depth:search_depth]
+    intensity_threshold = max(search_intensities)
+
     return [
         (index + 1, coord)
-        for index, (intensity, coord) in enumerate(zip(transition_intensities, scanline[1:]))
-        if abs(intensity) > intensity_threshold
+        for index, (intensity, coord) in enumerate(zip(crop_intensities, scanline[1:]))
+        if intensity > intensity_threshold
     ]
 
 

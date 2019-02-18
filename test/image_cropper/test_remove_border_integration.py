@@ -74,12 +74,12 @@ def _get_expected_image_states(dir_name):
 
 def _get_actual_image_states(base_image: Image):
     num_scanlines = 100
-    intensity_threshold = 40
-    depth = 5
+    crop_depth = 5
+    search_depth = 15
 
     crop_1 = remove_border(base_image, transparent_edge, num_scanlines=num_scanlines)
     crop_2 = remove_border(crop_1, bad_pixels_edge, num_scanlines=num_scanlines,
-                           intensity_threshold=intensity_threshold, depth=depth)
+                           crop_depth=crop_depth, search_depth=search_depth)
 
     return ImageStates(base_image, crop_1, crop_2)
 
