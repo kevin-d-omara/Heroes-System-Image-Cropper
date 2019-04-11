@@ -48,3 +48,12 @@ See also: https://docs.pytest.org/en/latest/
 1. Run: `pyinstaller src/image_cropper/main.py --name heroes-system-image-cropper --onefile`
 
 See also: https://pyinstaller.readthedocs.io/en/stable/usage.html
+
+#### Run via IntelliJ
+Follow these steps in order to run the program through IntelliJ:
+1. Open `src/image_cropper/main.py`.
+1. Right click anywhere within the file and select **Run 'main'**.
+1. At the top right, select the dropdown titled **main** and click **Edit Configurations...**.
+1. In **Parameters:** enter one or more paths to the files to crop. The paths are relative and start from the working directory `src/image_cropper`.
+  * Note: right now, the parameters are replaced with a hardcoded value at the start of `main()`.
+    In this case, set a fake argument like `IGNORE_ME` and change the file path from within the code.
