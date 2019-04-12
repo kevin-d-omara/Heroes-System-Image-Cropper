@@ -13,6 +13,16 @@ from image_cropper import _hardcode
 OUTPUT_FOLDER = Path('cropped')
 
 
+def get_paths_by_magic():
+    folder = 'to_crop'
+    names_to_crop = [
+        'recon-team.A.png',
+        'recon-team.B.png',
+    ]
+    paths_to_crop = ['/'.join([folder, name]) for name in names_to_crop]
+    return paths_to_crop
+
+
 def main():
     """
     Crop all the named images (argv[1:]) and save them to a new directory "./cropped/".
@@ -20,7 +30,8 @@ def main():
     to_crop = sys.argv[1:]
 
     # Override by magic.
-    to_crop = list([_hardcode.get_image_path(_hardcode.HOUSE_WITH_VARIETY, _hardcode.BASE)])
+    to_crop = get_paths_by_magic()
+    # to_crop = list([_hardcode.get_image_path(_hardcode.HOUSE_WITH_VARIETY, _hardcode.BASE)])
 
     print("Running HeroesSystemImageCropper")
     print("Working Directory: " + os.getcwd())
