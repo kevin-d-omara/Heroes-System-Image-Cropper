@@ -17,20 +17,25 @@ def main():
     """
     Crop all the named images (argv[1:]) and save them to a new directory "./cropped/".
     """
-    sys.argv[1] = _hardcode.get_image_path(_hardcode.HOUSE_WITH_VARIETY, _hardcode.BASE)
+    to_crop = sys.argv[1:]
+
+    # Override by magic.
+    to_crop = list([_hardcode.get_image_path(_hardcode.HOUSE_WITH_VARIETY, _hardcode.BASE)])
+
     print("Running HeroesSystemImageCropper")
     print("Working Directory: " + os.getcwd())
     print("Output Directory: " + str(Path(os.getcwd()).joinpath(OUTPUT_FOLDER)))
-    print("Args: " + str(sys.argv[1:]))
+    print("Args: " + str(to_crop))
 
-    file_names = sys.argv[1:]
+    file_names = to_crop
     image_paths = [try_create_path(name) for name in file_names]
-    original_images = [Image.open(path) for path in image_paths]
-    cropped_images = [crop_image(image) for image in original_images]
-
     OUTPUT_FOLDER.mkdir(exist_ok=True)
-    for image, path in zip(cropped_images, image_paths):
-        save_image(image, OUTPUT_FOLDER.joinpath(path.name))
+
+    for image_path in image_paths:
+        print("Cropping image with path: " + str(image_path))
+        original_image = Image.open(image_path)
+        cropped_image = crop_image(original_image)
+        save_image(cropped_image, OUTPUT_FOLDER.joinpath(image_path.name))
 
 
 def try_create_path(file_name: str) -> Path:
