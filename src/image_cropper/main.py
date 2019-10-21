@@ -15,6 +15,9 @@ OUTPUT_FOLDER = Path('cropped')
 
 
 def get_paths_by_magic():
+    """
+    Run 'ls -1' to list the files in a single column, then copy-paste in 'names_to_crop':
+    """
     folder = 'to_crop'
     names_to_crop = [
         'recon-team.A.png',

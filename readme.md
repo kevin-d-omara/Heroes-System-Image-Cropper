@@ -38,6 +38,8 @@ To run commands like `pytest` and `pyinstaller` you need to activate the virtual
 *This must be done each time you open IntelliJ.*
 
 #### Run unit tests
+*Before running unit tests, make sure do delete the `out/` directory, and do not run `Build > Build Project`.*
+
 1. Activate Venv
 1. Run `pytest`
 
