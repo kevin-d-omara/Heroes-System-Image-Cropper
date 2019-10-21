@@ -1,9 +1,10 @@
-from PIL import Image
-from .scanline import get_scanlines_left_to_right, get_scanlines_right_to_left
-from .scanline import get_scanlines_top_to_bottom, get_scanlines_bottom_to_top
 import statistics
 
+from PIL import Image
+
 from . import find_edges, pick_edge
+from .scanline import get_scanlines_left_to_right, get_scanlines_right_to_left
+from .scanline import get_scanlines_top_to_bottom, get_scanlines_bottom_to_top
 
 
 def remove_border(image: Image, get_edge_coordinates, num_scanlines=100, **kwargs):

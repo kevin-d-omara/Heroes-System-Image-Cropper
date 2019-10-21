@@ -1,8 +1,9 @@
+from collections import namedtuple
+
 import pytest
 from PIL import Image
-from collections import namedtuple
-from src.image_cropper.remove_border import remove_border, transparent_edge, bad_pixels_edge
 
+from src.image_cropper.remove_border import remove_border, transparent_edge, bad_pixels_edge
 
 ImageStates = namedtuple('ImageStates', ['base', 'crop_1', 'crop_2'])
 

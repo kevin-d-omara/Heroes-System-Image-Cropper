@@ -1,8 +1,9 @@
 """
 Methods to retrieve a scanline from an image. A scanline is a horizontal or vertical line of pixel coordinates.
 """
-from PIL import Image
 from typing import Tuple, List
+
+from PIL import Image
 
 
 def get_scanlines_left_to_right(image: Image, num_lines=1) -> List[List[Tuple[int, int]]]:

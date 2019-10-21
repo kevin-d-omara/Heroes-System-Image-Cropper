@@ -1,13 +1,14 @@
 """
 Entry point to the Heroes System Image Cropper program.
 """
-import sys
 import os
+import sys
 from pathlib import Path
 
 from PIL import Image
-from image_cropper.remove_border import remove_border, transparent_edge, white_edge, bad_pixels_edge
+
 from image_cropper.image_extensions import has_alpha_channel
+from image_cropper.remove_border import remove_border, transparent_edge, white_edge, bad_pixels_edge
 from image_cropper import _hardcode
 
 OUTPUT_FOLDER = Path('cropped')
