@@ -54,6 +54,13 @@ def test_house_with_variety():
     _test_remove_border_all_steps("house-with-variety")
 
 
+def test_barbed_wire_beach():
+    """
+    The image has multiple colors due to the sand. This should be similar to the "house_with_variety" test.
+    """
+    _test_remove_border_all_steps("barbed-wire-beach")
+
+
 def _test_remove_border_all_steps(dir_name):
     expected = _get_expected_image_states(dir_name)
 
